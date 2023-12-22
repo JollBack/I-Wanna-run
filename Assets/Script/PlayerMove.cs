@@ -2,17 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class PlayerMove : MonoBehaviour
 {
-    
+    public GameManager gameManager;
     public float maxSpeed; // 최대속도
     public float jumpPower; // 점프파워
+    public static Action ps;
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
     Animator anim;
     bool isJumping;
     UiManager uimanager;
+
+    private void Start()
+    {
+        Time.timeScale = 1;
+    }
     void Awake()
     {
 
@@ -20,6 +27,12 @@ public class PlayerMove : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         isJumping = false;
         uimanager = GetComponent<UiManager>();
+
+        ps = () =>
+        {
+            StopGame();
+        };
+
     }
 
     void Update()
@@ -53,14 +66,23 @@ public class PlayerMove : MonoBehaviour
             OnDamaged(collision.transform.position);
             UiManager.php();
         }
-        // 플레이어가 코인태그가 있는 오브젝트에 닿았을떄
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
         if (collision.gameObject.tag == "Item")
         {
-            Debug.Log ("h");
-             //코인 제거
+            //코인 제거
+            gameManager.stagePoint += 1;
             collision.gameObject.SetActive(false);
         }
 
+        if (collision.gameObject.tag == "Finish")
+        {
+            //next stage
+            gameManager.NextStage();
+        }
     }
 
     void FixedUpdate()
@@ -95,6 +117,9 @@ public class PlayerMove : MonoBehaviour
 
     void OnDamaged(Vector2 targetPos)
     {
+        // health down
+        gameManager.health--;
+
         gameObject.layer = 6;
 
         spriteRenderer.color = new Color(1, 1, 1, 0.4f);
@@ -120,5 +145,8 @@ public class PlayerMove : MonoBehaviour
         jumpPower = 14;
     }
     
-    
+    void StopGame()
+    {
+        Time.timeScale = 0;
+    }
 }
