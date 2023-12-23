@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class PlayerMove : MonoBehaviour
     public float maxSpeed; // 최대속도
     public float jumpPower; // 점프파워
     public static Action ps;
+    public GameManager manager;
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
     Animator anim;
@@ -53,6 +55,9 @@ public class PlayerMove : MonoBehaviour
         // change Direction
         if (Input.GetButtonDown("Horizontal"))
             spriteRenderer.flipX = Input.GetAxisRaw("Horizontal") == -1;
+
+        if (Input.GetButtonDown("restart"))
+            SceneManager.LoadScene("Wanna");
     }
     
     private void OnCollisionEnter2D(Collision2D collision)
@@ -78,10 +83,10 @@ public class PlayerMove : MonoBehaviour
             collision.gameObject.SetActive(false);
         }
 
-        if (collision.gameObject.tag == "Finish")
+        else if (collision.gameObject.tag == "Finish")
         {
             //next stage
-            gameManager.NextStage();
+            SceneManager.LoadScene("Wanna2");
         }
     }
 

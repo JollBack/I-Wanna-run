@@ -21,7 +21,6 @@ public class UiManager : MonoBehaviour
         {
             CanDamage(); HandleHp();
         };
-
     }
 
     private void Start()
@@ -30,10 +29,7 @@ public class UiManager : MonoBehaviour
         HandleHp();
         gameoverPanel.SetActive(false);
     }
-    private void Update()
-    {
 
-    }
     private void HandleHp()
     {
         playerhp.value = (float)heart / (float)maxHeart;
