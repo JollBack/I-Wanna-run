@@ -88,6 +88,11 @@ public class PlayerMove : MonoBehaviour
             //next stage
             SceneManager.LoadScene("Wanna2");
         }
+        else if (collision.gameObject.tag == "Finish2")
+        {
+            //next stage
+            SceneManager.LoadScene("GameFinish");
+        }
     }
 
     void FixedUpdate()

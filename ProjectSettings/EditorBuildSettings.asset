@@ -6,12 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/MainMenu.unity
+    guid: ba83901f9892f2c4eab8dd3ecf8ba9ed
+  - enabled: 1
+    path: Assets/Scenes/Wanna.unity
+    guid: eaba6be06a3ca6c438f16ec9d5d643c9
   - enabled: 1
     path: Assets/Scenes/Wanna2.unity
     guid: 861d309ad922b3e4083bcfdb67e581fc
   - enabled: 1
-    path: Assets/Scenes/Wanna.unity
-    guid: eaba6be06a3ca6c438f16ec9d5d643c9
+    path: Assets/Scenes/GameFinish.unity
+    guid: ff4177515fad87b4aaaa33092d645069
   m_configObjects: {}

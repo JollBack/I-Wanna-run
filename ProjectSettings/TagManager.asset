@@ -17,7 +17,7 @@ TagManager:
   - PlayerDamage
   - Player
   - Coin
-  - 
+  - BackGround
   - 
   - 
   - 
@@ -43,4 +43,22 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: BackGround
+    uniqueID: 4140953885
+    locked: 0
+  - name: Enemy
+    uniqueID: 166657881
+    locked: 0
+  - name: PlayerDamage
+    uniqueID: 3249516257
+    locked: 0
+  - name: Player
+    uniqueID: 607306421
+    locked: 0
+  - name: Coin
+    uniqueID: 2104013315
+    locked: 0
+  - name: UI
+    uniqueID: 2610036429
     locked: 0
